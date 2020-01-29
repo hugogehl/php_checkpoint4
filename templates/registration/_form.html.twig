@@ -1,0 +1,33 @@
+{{ form_start(registrationForm) }}
+
+<div class="formBlock">
+
+    {{ form_label(registrationForm.name, 'Nom', {'label_attr': {'class': 'formLabel'} }) }}
+    {{ form_widget(registrationForm.name) }}
+
+    {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'formLabel'} }) }}
+    {{ form_widget(registrationForm.email) }}
+
+    {{ form_label(registrationForm.phone_number, 'Téléphone', {'label_attr': {'class': 'formLabel'} }) }}
+    {{ form_widget(registrationForm.phone_number) }}
+
+    {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'formLabel'} }) }}
+    {{ form_widget(registrationForm.plainPassword) }}
+
+    <div class="blockAgreeTerms">
+        <label for="registration_form_agreeTerms" class="formLabel required">Accepter les termes</label>
+        {{ form_widget(registrationForm.agreeTerms, { 'attr': {'class': 'form-control formWidgetTerms'} }) }}
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success" style="color: #1b9448">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="btnContent">
+        <button class="btnForm" type="submit" name="S'enregistrer">S'enregistrer</button>
+    </div>
+</div>
+
+{{ form_end(registrationForm) }}

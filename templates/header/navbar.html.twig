@@ -1,0 +1,22 @@
+<nav>
+
+    <ul>
+        <li><a class="btnLink" href="{{ path('home_index') }}">Accueil</a></li>
+        <li><a class="btnLink" href="">Nos aventures</a></li>
+        <li><a class="btnLink" href="">Panier</a></li>
+        <li>
+            {% if is_granted('ROLE_ADMIN') or is_granted('ROLE_SUBSCRIBER') %}
+            {% elseif not is_granted('ROLE_ADMIN') or not is_granted('ROLE_SUBSCRIBER') %}
+                <a class="btn" href="{{ path('app_register') }}"> Créer un compte</a>
+            {% endif %}
+        </li>
+        <li>
+            {% if app.user %}
+                <a class="btn" href="{{ path('app_logout') }}"> Se déconnecter</a>
+            {% else %}
+                <a class="btn" href="{{ path('app_login') }}"> Se connecter</a>
+            {% endif %}
+        </li>
+    </ul>
+
+</nav>
